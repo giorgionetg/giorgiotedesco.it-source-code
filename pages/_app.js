@@ -1,4 +1,20 @@
+/*!
 
+=========================================================
+* NextJS Material Kit v1.1.0 based on Material Kit Free - v2.0.2 (Bootstrap 4.0.0 Final Edition) and Material Kit React v1.8.0
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/nextjs-material-kit
+* Copyright 2020 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/nextjs-material-kit/blob/master/LICENSE.md)
+
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+*/
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "next/app";
@@ -7,7 +23,6 @@ import Router from "next/router";
 
 import PageChange from "components/PageChange/PageChange.js";
 
-import { NextSeo, DefaultSeo } from 'next-seo';
 
 import "assets/scss/nextjs-material-kit.scss?v=1.1.0";
 
@@ -30,8 +45,7 @@ Router.events.on("routeChangeError", () => {
 
 export default class MyApp extends App {
   componentDidMount() {
-    /*let comment = document.createComment();
-    document.insertBefore(comment, document.documentElement);*/
+
   }
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};
@@ -47,24 +61,30 @@ export default class MyApp extends App {
 
     return (
       <React.Fragment>
-        
-		<DefaultSeo
-		  title="Giorgio Tedesco"
-		  description="An appassionate Web Developer"
-		  canonical="https://www.giorgiotedesco.it/"
-		  openGraph={{
-			url: 'https://www.giorgiotedesco.it/',
-			title: 'Giorgio Tedesco',
-			description: 'A passionate Web Developer',
-			site_name: 'Giorgio Tedesco',
-		  }}
-		  twitter={{
-			handle: '@giorgionetg',
-			site: '@giorgiotedesco.it',
-			cardType: 'summary_large_image',
-		  }}
-		/>
-		
+      <Head>
+        <meta charSet="utf-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <meta name="theme-color" content="#000000" />
+        <link rel="shortcut icon" href={require("assets/img/favicon.png")} />
+        <link
+          rel="apple-touch-icon"
+          sizes="76x76"
+          href={require("assets/img/apple-icon.png")}
+        />
+        {/* Fonts and icons */}
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
+        />
+        <link
+          href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+          rel="stylesheet"
+        />
+      </Head>
         <Component {...pageProps} />
       </React.Fragment>
     );

@@ -36,10 +36,9 @@ import SectionExamples from "pages-sections/Components-Sections/SectionExamples.
 import SectionDownload from "pages-sections/Components-Sections/SectionDownload.js";
 import SectionMyDownload from "pages-sections/Components-Sections/SectionMyDownload.js";
 
-import styles from "assets/jss/nextjs-material-kit/pages/components.js";
-
-
 import { NextSeo } from 'next-seo';
+
+import styles from "assets/jss/nextjs-material-kit/pages/components.js";
 
 const useStyles = makeStyles(styles);
 
@@ -61,19 +60,19 @@ export default function Components(props) {
       />
 
       <NextSeo
-        title="Giorgio Tedesco | GDPR and Privacy Settings"
-        description="In this page you can set your preferences on Cookies."
-        canonical="https://wwww.giorgiotedesco.it/privacy"
+        title="Giorgio Tedesco | Just a web developer."
+        description="This website shows Giorgio Tedesco's skills on web development. This website has also a lot of information on CG3D, Blender, Web Development, Cryptocurrencies and Artificial Intelligence too."
+        canonical="https://www.giorgiotedesco.it/web-developer"
       />
 
-      <Parallax image={require("assets/img/charles-deluvio-pjAH2Ax4uWk-unsplash.jpg")}>
+      <Parallax image={require("assets/img/andras-vas-Bd7gNnWJBkU-unsplash.jpg")}>
         <div className={classes.container}>
           <GridContainer>
             <GridItem>
               <div className={classes.brand}>
-                <h1 className={classes.title}>GDPO & Privacy<br />Management Tool.</h1>
+                <h1 className={classes.title}>Just a web developer</h1>
                 <h3 className={classes.subtitle}>
-                  Please take care the website is<br /> in <b>Working in Progress*</b> mode. <sup><small>I love Privacy.</small></sup>
+                  Based in Rome (Italy) and born in Brazil!
                 </h3>
               </div>
             </GridItem>
@@ -86,20 +85,18 @@ export default function Components(props) {
       {/* <div className={classNames(classes.main, classes.mainRaised)}> */}
       <div className={classNames(classes.main)}>
 
-        <CookieConsent color="violet" />
+        <CookieConsent  />
 
-        <div className={classes.section}>
-          <div className={classes.container}>
-            <GridContainer justify="center">
-              <GridItem xs={12} sm={12} md={8}>
-                <h3>Things to know</h3>
-                <p>I don't love to use Cookies, that's way I don't use Cookies, because I don't track your navigation. This is a static website made with ReactJs / NextJs.</p>
-                <h4><strong><sup>*</sup>While this website is in Working progress, there are some libraries and links from <i>Google Fonts</i> and <i>Material Icon</i> that are loaded from providers. They could track you.</strong></h4>
-                <br /><br />
-              </GridItem>
-            </GridContainer>
-          </div>
-        </div>
+        {/* <SectionBasics />
+        <SectionNavbars />
+        <SectionTabs />
+        <SectionPills />
+        <SectionNotifications />
+        <SectionTypography />
+        <SectionJavascript />
+        <SectionCarousel /> */}
+        <SectionMicroBio />
+        <br /><br />
         {/* <SectionMyPills />
         <SectionMyDownload />*/}
       </div>
