@@ -11,11 +11,24 @@ import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 import Favorite from "@material-ui/icons/Favorite";
 
+import Button from "components/CustomButtons/Button";
+import { useConnect } from '@blockstack/connect';
+import { Storage } from '@stacks/storage';
+
+
 import styles from "assets/jss/nextjs-material-kit/components/footerStyle.js";
 
 const useStyles = makeStyles(styles);
 
 export default function Footer(props) {
+
+  const { doOpenAuth, authOptions } = useConnect();
+  const { userSession } = authOptions;
+  const storage = new Storage({ userSession });
+
+  console.log('ARI PORCO E DIO')
+  console.log(userSession)
+
   const classes = useStyles();
   const { whiteFont } = props;
   const footerClasses = classNames({
@@ -31,7 +44,7 @@ export default function Footer(props) {
       <div className={classes.container}>
         <div className={classes.left}>
           <List className={classes.list}>
-            <ListItem className={classes.inlineBlock}>
+            {/*<ListItem className={classes.inlineBlock}>
               <a
                 as='link'
                 href="/webapps-n-dapps"
@@ -66,6 +79,10 @@ export default function Footer(props) {
               >
                 On AI (ML, DL)
               </a>
+            </ListItem> */}
+
+            <ListItem className={classes.inlineBlock}>
+              <Button onClick={() => doOpenAuth()}>ADMIN</Button> -
             </ListItem>
             <ListItem className={classes.inlineBlock}>
               <a

@@ -16,9 +16,10 @@ import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
+import Badge from 'components/Badge/Badge.js';
 
-import ReactMarkdown from 'react-markdown'
-
+import ReactMarkdown from 'react-markdown';
+import gfm from 'remark-gfm';
 import { NextSeo } from 'next-seo';
 import { ArticleJsonLd } from 'next-seo';
 
@@ -27,8 +28,9 @@ import styles from "assets/jss/nextjs-material-kit/pages/components.js";
 import { cardTitle } from "assets/jss/nextjs-material-kit.js";
 import cardBodyStyle from "assets/jss/nextjs-material-kit/components/cardBodyStyle.js";
 import imagesStyles from "assets/jss/nextjs-material-kit/imagesStyles.js";
+import badgeStyle from "assets/jss/nextjs-material-kit/components/badgeStyle.js"
 
-import myimage from "assets/img/giorgio-tedesco-images/giorgio-tedesco-01.jpg";
+import myimage from "assets/img/giorgio-tedesco-images/giorgio-tedesco-low-res.jpg";
 
 let gridStyle = {
     paddingTop: "3em",
@@ -40,6 +42,7 @@ const newstyles = {
   imagesStyles,
   cardBodyStyle,
   cardTitle,
+  badgeStyle,
   gridStyle
 };
 
@@ -103,7 +106,7 @@ export default function singlePost({ seoData, seoUrl, articleContent }) {
         <div className={classes.container}>
           <GridContainer className={classes.gridStyle}>
             <GridItem sm={12} md={8}>
-              <ReactMarkdown children={articleContent} />
+              <ReactMarkdown plugins={[gfm]} children={articleContent} />
             </GridItem>
             <GridItem sm={12} md={4}>
               <Card style={{width: "20rem", marginLeft: "auto", marginRight: "auto"}}>
@@ -113,7 +116,19 @@ export default function singlePost({ seoData, seoUrl, articleContent }) {
                   <h4 className={classes.cardTitle}>Giorgio Tedesco</h4>
                   <p>Just a web developer</p>
                   <Button as='link' href='/about-me' fullWidth={true}>Read More</Button>
+                  <p><small>There is a why my photo is low res. I'm working in a little web game!</small></p>
                 </CardBody>
+              </Card>
+              <br /><br />
+              <Card style={{width: "20rem", marginLeft: "auto", marginRight: "auto"}}>
+                  <CardHeader color="info">Related Arguments</CardHeader>
+                  {/* <img style={{height: "auto", width: "100%", display: "block"}} className={classes.imgCardTop} src={myimage} rel="nofollow" alt="Giorgio Tedesco" /> */}
+                  <CardBody >
+                    <h4 className={classes.cardTitle}>TAGS</h4>
+                    { seoData.tags.map((item) => {
+                      return(<Badge color='info'>{item}</Badge>)
+                    }) }
+                  </CardBody>
               </Card>
             </GridItem>
           </GridContainer>

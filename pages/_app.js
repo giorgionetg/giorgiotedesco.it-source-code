@@ -23,6 +23,10 @@ import Router from "next/router";
 
 import PageChange from "components/PageChange/PageChange.js";
 
+import { Connect } from '@blockstack/connect';
+import { UserSession } from '@stacks/auth';
+import { appConfig } from '../assets/constants';
+const userSession = new UserSession({ appConfig });
 
 import "assets/scss/nextjs-material-kit.scss?v=1.1.0";
 
@@ -44,9 +48,24 @@ Router.events.on("routeChangeError", () => {
 });
 
 export default class MyApp extends App {
+
+  state = {
+    userData: null,
+  };
+
   componentDidMount() {
 
+    if (userSession.isSignInPending()) {
+      userSession.handlePendingSignIn().then(userData => {
+        window.history.replaceState({}, document.title, '/');
+        this.setState({ userData: userData });
+      });
+    } else if (userSession.isUserSignedIn()) {
+      this.setState({ userData: userSession.loadUserData() });
+    }
+
   }
+
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};
 
@@ -58,6 +77,21 @@ export default class MyApp extends App {
   }
   render() {
     const { Component, pageProps } = this.props;
+
+    const { userData } = this.state;
+
+    console.log(userData)
+    const authOptions = {
+      appDetails: {
+        name: "GiorgioTedesco",
+        icon: '/logo.svg',
+      },
+      userSession,
+      finished: ({ userSession }) => {
+        this.setState({ userData: userSession.loadUserData() });
+      },
+    };
+
 
     return (
       <React.Fragment>
@@ -85,7 +119,9 @@ export default class MyApp extends App {
           rel="stylesheet"
         />
       </Head>
-        <Component {...pageProps} />
+        <Connect authOptions={authOptions}>
+          <Component {...pageProps} />
+        </Connect>
       </React.Fragment>
     );
   }

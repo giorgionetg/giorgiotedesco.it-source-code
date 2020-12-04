@@ -13,7 +13,8 @@ import styles from "assets/jss/nextjs-material-kit/pages/componentsSections/comp
 
 const useStyles = makeStyles(styles);
 
-import image from "assets/img/giorgio-tedesco-images/giorgio-tedesco-01.jpg";
+// import image from "assets/img/giorgio-tedesco-images/giorgio-tedesco-01.jpg";
+import image from "assets/img/giorgio-tedesco-images/giorgio-tedesco-low-res.jpg";
 
 export default function SectionMicroBio() {
   const classes = useStyles();
@@ -38,7 +39,8 @@ export default function SectionMicroBio() {
                 " " +
                 classes.imgFluid
               }
-            />
+            /><br /><br />
+            <small>There is a reason for low res (I'm working in a little web game)!</small>
           </GridItem>
           <GridItem  xs={12} sm={12} md={8}>
             <h4>
@@ -53,7 +55,7 @@ export default function SectionMicroBio() {
             <h4>
               Not less important but I had got also some experiences with AI (ML in the python enviroment) and Google Colab (just because I currently have not a good Nvidia GPU).
             </h4>
-            <Button as='link' href="/the-blog/on-cryptocurrencies" color="info">Read More (not currently About Me)</Button>
+            <Button as='link' href="/web-apps/json-resume/viewer/" color="info">My CV / Resumé</Button>
           </GridItem>
         </GridContainer>
       </div>

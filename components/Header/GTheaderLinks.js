@@ -9,11 +9,16 @@ import ListItem from "@material-ui/core/ListItem";
 import Tooltip from "@material-ui/core/Tooltip";
 import Icon from "@material-ui/core/Icon";
 
+import PersonIcon from "@material-ui/icons/Person";
+
 // @material-ui/icons
 import VisibilityIcon from '@material-ui/icons/Visibility';
+
 import { Apps, CloudDownload } from "@material-ui/icons";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
+import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode';
+import AppsIcon from '@material-ui/icons/Apps';
 
 // core components
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
@@ -32,31 +37,46 @@ export default function GTheaderLinks(props) {
       <ListItem className={classes.listItem}>
         <Button
           as="link"
+          href="/about-me"
+          color="transparent"
+          className={classes.navLink}
+        >
+          <PersonIcon className={classes.icons} /> ABOUT ME
+        </Button>
+      </ListItem>
+      {/* <ListItem className={classes.listItem}>
+        <Button
+          as="link"
+          href="/web-apps"
+          color="transparent"
+          className={classes.navLink}
+        >
+          <AppsIcon className={classes.icons} /> WEBAPPS
+        </Button>
+      </ListItem> */}
+      <ListItem className={classes.listItem}>
+        <Button
+          as="link"
+          href="/the-blog/on-cryptocurrencies"
+          color="transparent"
+          className={classes.navLink}
+        >
+          <ChromeReaderModeIcon className={classes.icons} /> The Blog
+        </Button>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <Button
+          as="link"
           href="/privacy"
           color="transparent"
-          target="_blank"
           className={classes.navLink}
         >
           <VisibilityIcon className={classes.icons} /> PRIVACY
         </Button>
       </ListItem>
-      {/* <ListItem className={classes.listItem}>
-        <Button
-          as='link'
-          href="/contact-me"
-          color="transparent"
-          target="_blank"
-          className={classes.navLink}
-        >
-          <VisibilityIcon className={classes.icons} /> Contact Me
-        </Button>
-      </ListItem> */}
+
       <ListItem className={classes.listItem}>
-        {/*<Tooltip title="Delete">
-          <IconButton aria-label="Delete">
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>*/}
+
         <Tooltip
           id="instagram-twitter"
           title="Follow me on twitter"
@@ -73,25 +93,6 @@ export default function GTheaderLinks(props) {
           </Button>
         </Tooltip>
       </ListItem>
-      {/*
-      <ListItem className={classes.listItem}>
-        <Tooltip
-          id="instagram-tooltip"
-          title="Follow us on instagram"
-          placement={"top"}
-          classes={{ tooltip: classes.tooltip }}
-        >
-          <Button
-            color="transparent"
-            href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
-            target="_blank"
-            className={classes.navLink}
-          >
-            <i className={classes.socialIcons + " fab fa-instagram"} />
-          </Button>
-        </Tooltip>
-      </ListItem> */}
-
     </List>
   );
 }

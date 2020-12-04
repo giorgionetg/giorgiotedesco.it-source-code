@@ -3,12 +3,9 @@ import Link from "next/link";
 
 import classNames from "classnames";
 
-import Parallax from "components/Parallax/Parallax.js";
-import Header from "components/Header/Header.js";
-import GTheaderLinks from "components/Header/GTheaderLinks.js";
+import Layout from 'components/Layout/Layout.js'
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Footer from "components/Footer/Footer.js";
 import Button from "components/CustomButtons/Button.js";
 
 import Card from "components/Card/Card.js";
@@ -23,9 +20,15 @@ import { cardTitle } from "assets/jss/nextjs-material-kit.js";
 import cardBodyStyle from "assets/jss/nextjs-material-kit/components/cardBodyStyle.js";
 import imagesStyles from "assets/jss/nextjs-material-kit/imagesStyles.js";
 
+import Quote from "components/Typography/Quote.js";
+
 let gridStyle = {
-    paddingTop: "3em",
+    paddingTop: "2em",
     paddingBottom: "1em"
+}
+
+let mainStyle = {
+  paddingBottom: "3em"
 }
 
 const newstyles = {
@@ -33,7 +36,8 @@ const newstyles = {
   imagesStyles,
   cardBodyStyle,
   cardTitle,
-  gridStyle
+  gridStyle,
+  mainStyle
 };
 
 const useStyles = makeStyles(newstyles);
@@ -45,16 +49,6 @@ export default function onCryptocurrencies({ postListCryptocurrencies, categoryL
   const classes = useStyles();
   return (
     <div>
-      <Header
-        brand="Giorgio Tedesco"
-        rightLinks={<GTheaderLinks />}
-        fixed
-        color="transparent"
-        changeColorOnScroll={{
-          height: 400,
-          color: "white"
-        }}
-      />
 
       <NextSeo
         title="On Cryptocurrencies Blog | Giorgio Tedesco | Just a web developer."
@@ -62,57 +56,41 @@ export default function onCryptocurrencies({ postListCryptocurrencies, categoryL
         canonical="https://www.giorgiotedesco.it/the-blog/on-cryptocurrencies"
       />
 
-      <Parallax image={require("assets/img/dmitry-demidko-OG3A-ilG8AY-unsplash.jpg")}>
-        <div className={classes.container}>
-          <GridContainer>
-            <GridItem>
-              <div className={classes.brand}>
-                <h1 className={classes.title}>On Bitcoin and Cryptocurrencies</h1>
-                <h3 className={classes.subtitle}>
-                  Understanding Bitcoin, Ethereum and Xrp
-                </h3>
-              </div>
-            </GridItem>
-          </GridContainer>
-        </div>
-      </Parallax>
+      <Layout title='On Bitcoin and Cryptocurrencies' description='Understanding Bitcoin, Ethereum and Xrp' image='dmitry-demidko-OG3A-ilG8AY-unsplash.jpg'>
 
-      <div className={classNames(classes.main)}>
-        <div className={classes.container}>
-          <GridContainer className={classes.gridStyle}>
-            {postListCryptocurrencies.map((item) => {
-              let linking = '/the-blog/on-cryptocurrencies/' + item.slug;
-              //return <li><Link href={linking}>{item.title}</Link></li>
+        <GridContainer className={classes.gridStyle}>
+          <GridItem sm={12} md={3} className={classes.mainStyle}>
+            <Quote text={(<h5>Your keys, your money</h5>)} author="anonymous" />
+          </GridItem>
+          <GridItem sm={12} md={3} className={classes.mainStyle}>
+            <Quote text={(<h5>No one wants to be the first, no one wants to be the last</h5>)} author="Ivan on Tech" />
+          </GridItem>
+          <GridItem sm={12} md={3} className={classes.mainStyle}>
+            <Quote text={(<h5>When Lambo!</h5>)} author="Folks" />
+          </GridItem>
+          <GridItem sm={12} md={3} className={classes.mainStyle}>
+            <Quote text={(<h5>Scarcity, Stock To Flow</h5>)} author="PlanB" />
+          </GridItem>
+          {postListCryptocurrencies.map((item) => {
+            let linking = '/the-blog/on-cryptocurrencies/' + item.slug;
+            //return <li><Link href={linking}>{item.title}</Link></li>
 
-              return (
-                <GridItem sm={12} md={4}>
-                  <Card style={{width: "20rem", marginLeft: "auto", marginRight: "auto"}}>
-                    <CardHeader color="warning">On Cryptocurrencies</CardHeader>
-                    {/* <img class="card-img-top" src="https://images.unsplash.com/photo-1517303650219-83c8b1788c4c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bd4c162d27ea317ff8c67255e955e3c8&auto=format&fit=crop&w=200&q=30" rel="nofollow" alt="Card image cap" /> */}
-                    <CardBody >
-                      <h4 className={classes.cardTitle}>{item.title}</h4>
-                      <p>{item.description}</p>
-                      <Button as='link' href={linking} fullWidth={true}>Read More</Button>
-                    </CardBody>
-                  </Card>
-                </GridItem>
-              )
-            })}
-
-          </GridContainer>
-        </div>
-      </div>
-
-
-      <ul>
-        {categoryList.map((item) => {
-          let linking = '/the-blog/' + item.slug;
-          return <li><Link href={linking}>{item.title}</Link></li>
-        })}
-      </ul>
-
-      <Footer />
-
+            return (
+              <GridItem sm={12} md={4}>
+                <Card style={{width: "20rem", marginLeft: "auto", marginRight: "auto"}}>
+                  <CardHeader color="warning">On Cryptocurrencies</CardHeader>
+                  {/* <img class="card-img-top" src="https://images.unsplash.com/photo-1517303650219-83c8b1788c4c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bd4c162d27ea317ff8c67255e955e3c8&auto=format&fit=crop&w=200&q=30" rel="nofollow" alt="Card image cap" /> */}
+                  <CardBody >
+                    <h4 className={classes.cardTitle}>{item.title}</h4>
+                    <p>{item.description}</p>
+                    <Button as='link' href={linking} fullWidth={true}>Read More</Button>
+                  </CardBody>
+                </Card>
+              </GridItem>
+            )
+          })}
+        </GridContainer>
+      </Layout>
     </div>
   );
 }
