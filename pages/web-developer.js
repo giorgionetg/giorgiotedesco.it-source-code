@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // react components for routing our app without refresh
@@ -17,10 +17,23 @@ import { NextSeo } from 'next-seo';
 import styles from "assets/jss/nextjs-material-kit/pages/components.js";
 
 const useStyles = makeStyles(styles);
+import useSWR from 'swr'
+//https://gaia.blockstack.org/hub/1NsfK4B23SFDj1xqh85FANqnrFG1zKU2BU/status.json
 
 export default function Components(props) {
   const classes = useStyles();
   const { ...rest } = props;
+
+  const [blockstack, setBlockstack] = useState([{id:0,emotion:'',sentence:''}]);
+
+  useEffect(() => {
+    // localhost:https://gaia.blockstack.org/hub/1NsfK4B23SFDj1xqh85FANqnrFG1zKU2BU/status.json
+    fetch('https://gaia.blockstack.org/hub/1N3qdhpi671XKMaayJ2hnuB85MbciL9RQC/status.json ')
+      .then(res => res.json())
+      .then(data => setBlockstack(data.posts))
+  }, []);
+
+
   return (
     <div>
 
@@ -32,6 +45,11 @@ export default function Components(props) {
 
       <Layout title='Just a web developer' description='Based in Rome (Italy) and born in Brazil!' image='andras-vas-Bd7gNnWJBkU-unsplash.jpg'>
         <HomeSection />
+        <hr />
+        <h3>Latest Message from my BlockStack Account, a DApp I made</h3>
+        <ul>
+          {blockstack.map((post) => { return(<li key={post.id}>{post.emotion}: {post.sentence}</li>)})}
+        </ul>
       </Layout>
     </div>
   );

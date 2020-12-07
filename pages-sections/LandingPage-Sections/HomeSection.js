@@ -71,7 +71,7 @@ export default function ProductSection() {
                   iconColor="info"
                   vertical
                 />
-                <Button as='link' href='/the-blog/on-cryptocurrencies' color='info'>Read More</Button>
+                <Button as='link' href='/the-blog' color='info'>Read More</Button>
               </GridItem>
             </GridContainer>
           </GridItem>

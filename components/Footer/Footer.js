@@ -26,9 +26,6 @@ export default function Footer(props) {
   const { userSession } = authOptions;
   const storage = new Storage({ userSession });
 
-  console.log('ARI PORCO E DIO')
-  console.log(userSession)
-
   const classes = useStyles();
   const { whiteFont } = props;
   const footerClasses = classNames({

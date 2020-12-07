@@ -46,7 +46,7 @@ But in a context where you know how to operate, the Public Key and the sharable 
 
 #### But what is it the Private Key and how the Public is generated?
 
-First thing to know is: the **Secret Key** is a random big number (2^256, a 256-bit number, about a number composed by 78 digit) based on an ellyptic curve (y^2 = x^3+7 aka Secp256k1). Also if you see as a sequence of letter and number from A to F and from 0 to 9 is called **Hexadecimal** derived from a **Binary** number.
+First thing to know is: the **Secret Key** is a random big number (2^256, a 256-bit number, about a number composed by 70 digits, it means if you did "heads or tails" 256 times you get your "private key") based on an ellyptic curve (y^2 = x^3+7 aka Secp256k1, it means your "Public Key", that it is your y in the formula, is derived by your Private Key that is your x). Also if you see as a sequence of letter and number from A to F and from 0 to 9 is called **Hexadecimal** (here a realtime converter to test/check and understand) derived from a **Binary** number.
 
 The process to derive **Public Key** from the **Private Key** it's a very easy task. But to calculate the **Private Key** from the **Public Key** it's pretty impossible.
 The **Public and Private keys** are strictly connected together. With **Private Key** it is an easy and fast task to generate the **Public Key**, by the way the inverse path it is the one most difficult process that exists (a super computer could do it in about more than billion billion of years, let me say: don't try this at home).
@@ -64,4 +64,4 @@ If any miners could get the solution
 
 ### **The Block' Structure**. It's like any other informatic package.
 
-To make some examples, a bitcoin block it's similar any kind of package, like TCP/IP. There is a header, and a content block with all transactions.
+To make some examples, a bitcoin block it's similar any kind of package, like TCP/IP. There is a header, and a content block with all transactions. Anyway, the blockchain is agnostic at public key levels. If you generate your wallet, until you make a payment, the blockchain doesn't know about your existence. In to the block of blockchain are stored only the transactions sent by wallet. The record it is simply the value to move from a public key sender and the public key as receiver. Tha's all.

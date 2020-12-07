@@ -80,7 +80,6 @@ export default class MyApp extends App {
 
     const { userData } = this.state;
 
-    console.log(userData)
     const authOptions = {
       appDetails: {
         name: "GiorgioTedesco",
@@ -120,7 +119,7 @@ export default class MyApp extends App {
         />
       </Head>
         <Connect authOptions={authOptions}>
-          <Component {...pageProps} />
+          <Component {...pageProps} userData={userData}/>
         </Connect>
       </React.Fragment>
     );
