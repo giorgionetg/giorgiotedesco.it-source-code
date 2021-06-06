@@ -24,7 +24,12 @@ export default function Footer(props) {
 
   const { doOpenAuth, authOptions } = useConnect();
   const { userSession } = authOptions;
-  const storage = new Storage({ userSession });
+  let loginB;
+  if (userSession.isUserSignedIn()) {
+    loginB = (<Button as='link' href="/admin">ADMIN</Button>)
+  } else {
+    loginB = (<Button onClick={() => doOpenAuth()}>LOGIN</Button>)
+  }
 
   const classes = useStyles();
   const { whiteFont } = props;
@@ -79,7 +84,7 @@ export default function Footer(props) {
             </ListItem> */}
 
             <ListItem className={classes.inlineBlock}>
-              <Button onClick={() => doOpenAuth()}>ADMIN</Button> -
+              { loginB }
             </ListItem>
             <ListItem className={classes.inlineBlock}>
               <a

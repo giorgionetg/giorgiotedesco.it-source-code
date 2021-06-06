@@ -38,10 +38,10 @@ const saveToBlockstack = async (posts) => {
   });
 };
 
-const fetchPosts = async () => {
+const fetchPosts = async (user) => {
   const tasksJSON = await storage.getFile('status.json', {
     decrypt: false,
-    username: 'giorgionetg.id.blockstack',
+    username: user,
   });
   console.log(tasksJSON)
   return JSON.parse(tasksJSON)
@@ -50,52 +50,39 @@ const fetchPosts = async () => {
 
 export default function Components(props) {
 
-  let userLoader = { name: 'loading', username: 'loading', description: 'loading' };
+  let userLoader = { name: 'loading', username: 'loading', description: 'loading', puburl: '', pubgaiaurl: '' };
 
   if (userSession.isUserSignedIn()) {
     let userData = userSession.loadUserData();
-    userLoader = { name: userData.profile.name, username: userData.username, description: userData.profile.description };
+    let pubgaiaurl = 'GiorgioTedesco';
+    let puburl = 'GiorgioTedesco';
+    if ('https://www.giorgiotedesco.it' in userData.profile.apps) {
+      const desc = Object.getOwnPropertyDescriptor(userData.profile.apps, 'https://www.giorgiotedesco.it');
+      pubgaiaurl = desc.value + 'status.json'
+    }
+    puburl = 'https://www.giorgiotedesco.it/web-apps/messages/' + userData.username;
+    userLoader = { name: userData.profile.name, username: userData.username, description: userData.profile.description, puburl: puburl, pubgaiaurl: pubgaiaurl };
   }
+
+  console.log(userLoader)
+
+  useEffect(() => {
+    if(profile.username != 'loading') {
+      fetchPosts(profile.username).then((res) => {
+        setPosts(res.posts)
+      })
+    }
+  }, [])
 
   const [profile, setProfile] = useState(userLoader);
 
-  /*fetchPosts().then((solved) => {
-    setPosts(solved.posts);
-  });*/
-  const [posts, setPosts] = useState([{ id: 0, emotion: 'Neutral', sentence: 'Nothing to say' }]);
-
-  /*setProfile(async () => {
-    if (userSession.isSignInPending()) {
-      userSession.handlePendingSignIn().then(userData => {
-        return { name: userData.profile.name, username: userData.username, description: userData.profile.description };
-      });
-    } else if (userSession.isUserSignedIn()) {
-      let userData = userSession.loadUserData()
-      return { name: userData.profile.name, username: userData.username, description: userData.profile.description };
-    }
-  })*/
-
-  /*useEffect(() => {
-    function handleUser() {
-      if (userSession.isUserSignedIn()) {
-        let userData = userSession.loadUserData()
-        setProfile({ name: userData.profile.name, username: userData.username, description: userData.profile.description });
-      }
-    }
-
-    function cleanup() {
-      console.log(profile)
-      handleUser()
-      return profile;
-    }
-
-  })*/
+  const [posts, setPosts] = useState([{ id: 0, emotion: 'Neutral', sentence: 'Nothing to say', datetime: Date.now() }]);
 
   const postit = () => {
     if (posts.length == 0) {
-      setPosts([...posts, {id: 0, emotion:emotion, sentence: sentence}])
+      setPosts([...posts, {id: 0, emotion:emotion, sentence: sentence, datetime: Date.now() }])
     } else {
-      setPosts([...posts, {id: posts[posts.length -1].id + 1, emotion:emotion, sentence: sentence}])
+      setPosts([...posts, {id: posts[posts.length -1].id + 1, emotion:emotion, sentence: sentence, datetime: Date.now() }])
     }
   }
 
@@ -106,7 +93,7 @@ export default function Components(props) {
   }
 
   const handleSentence = (data) => {
-    console.log('pd sono qui?')
+
   }
 
   const [sentence, setSentence] = useState("Because.. I'm happy!!!");
@@ -133,14 +120,18 @@ export default function Components(props) {
         </p>
         <hr />
         <h2>Set your mood:</h2>
-        <CustomInput labelText="Emotion" inputProps={ { onChange: (e) => { setEmotion(e.target.value) } } } />
+        {profile.pubgaiaurl}<br/>
+        {profile.puburl}<br/>
+        {/* Your public url on <a href={profile.pubgaiaurl} target="_blank">BlockStack</a>.<br />
+        Your public url on <a href={profile.puburl}>GiorgioTedesco.it</a>.<br /> */}
+        <CustomInput labelText="Emotion" inputProps={ { onChange: (e) => { setEmotion(e.target.value) } } } /><br />
         <CustomInput labelText="Sentence" inputProps={ { onChange: (e) => { setSentence(e.target.value) } } } /><br />
         <Button onClick={() => { postit() }}>ADD!</Button>
         <ul>{ posts.map((post) => {
-          return (<li key={post.id}>{post.emotion}: {post.sentence} <Button onClick={() => { deleteit(post); } }>Delete</Button></li>)
+          return (<li key={post.id}>{post.emotion}: {post.sentence}<br /><Button onClick={() => { deleteit(post); } }>Delete</Button></li>)
         })}</ul>
         <Button onClick={() => {saveToBlockstack(posts)} }>Update on BlockStack</Button>
-        <Button onClick={async () => { let postsss = await fetchPosts(); setPosts(postsss.posts) } }>Load from BlockStack data</Button>
+        <Button onClick={async () => { let postsss = await fetchPosts(profile.username); setPosts(postsss.posts) } }>Load from BlockStack data</Button>
       </Layout>
     </div>
   );

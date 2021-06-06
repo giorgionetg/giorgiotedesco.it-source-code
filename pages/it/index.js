@@ -13,7 +13,7 @@ import CardBody from "components/Card/CardBody";
 import CardFooter from "components/Card/CardFooter";
 
 
-import HomeSection from "pages-sections/LandingPage-Sections/HomeSection.js";
+import HomeSection from "pages-sections/LandingPage-Sections/HomeSectionIT.js";
 import TweetSection from "pages-sections/LandingPage-Sections/TweetSection.js";
 
 import { NextSeo } from 'next-seo';
@@ -46,13 +46,13 @@ export default function Components(props) {
 
       <NextSeo
         title="Giorgio Tedesco | Just a web developer"
-        description="a personal Giorgio Tedesco's website used to share my interests on web developing, 3D Graphic, Cryptocurrencies (Bitcoin & Altcoin), Artificial Inteligence, Deep Learning."
+        description="sito personale di Giorgio Tedesco tramite il quale condivido i miei interessi sul web developing, Grafica 3D, Criptovalute (Bitcoin & Altcoin), Intelligenza Artificiale, Deep Learning."
         canonical="https://www.giorgiotedesco.it"
         openGraph={{
           type: 'website',
           url: 'https://www.giorgiotedesco.it',
           title: 'Giorgio Tedesco',
-          description: 'Just a web developer',
+          description: 'uno sviluppatore web',
           images: [
             {
               url: 'https://www.giorgiotedesco.it/_next/static/images/andras-vas-Bd7gNnWJBkU-unsplash-61553867678a3db4ae1acd2767d06321.jpg',
@@ -62,7 +62,7 @@ export default function Components(props) {
         }}
       />
 
-      <Layout title='Just a web developer' description='Based in Rome (Italy) and born in Brazil!' image='andras-vas-Bd7gNnWJBkU-unsplash.jpg'>
+      <Layout title='Sono uno sviluppatore web' description='Con sede in Roma (Italia) ma nato in Brasile!' image='andras-vas-Bd7gNnWJBkU-unsplash.jpg'>
         <HomeSection />
         <TweetSection posts={blockstack} />
       </Layout>

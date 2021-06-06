@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next",
+    "dev": "next dev -p 3030",
     "build": "next build",
-    "export": "next build && next export",
+    "export": "rm -rf .next/ && next build && next export",
     "sitemap": "node sitemapgenerator.js",
     "start": "next start",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && rm -rf .next/ && npm install && npm run dev"
@@ -47,6 +47,7 @@
     "@zeit/next-sass": "1.0.1",
     "blockstack": "^21.1.1",
     "classnames": "2.2.6",
+    "d3fc": "^15.1.2",
     "gray-matter": "^4.0.2",
     "moment": "2.25.3",
     "next": "9.5.5",
@@ -64,6 +65,7 @@
     "react-cookie-consent": "^5.2.0",
     "react-datetime": "2.16.3",
     "react-dom": "16.13.1",
+    "react-financial-charts": "^1.0.1",
     "react-markdown": "^5.0.2",
     "react-slick": "0.25.2",
     "react-swipeable-views": "0.13.9",

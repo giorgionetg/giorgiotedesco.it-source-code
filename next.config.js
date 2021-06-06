@@ -23,7 +23,9 @@ module.exports = withPlugins([[withSass], [withImages]], {
   },
   trailingSlash: true,
   i18n: {
-    locales: ['en-US', 'it-IT', 'pt-BR'],
-    defaultLocale: 'en-us'
-  }
+    locales: ['en', 'it', 'pt'],
+    defaultLocale: 'en',
+    localeDetection: true
+  },
+  env: {}
 });
