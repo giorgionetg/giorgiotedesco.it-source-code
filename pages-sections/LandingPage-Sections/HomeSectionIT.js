@@ -45,33 +45,33 @@ export default function ProductSection() {
             <GridContainer>
               <GridItem xs={12} sm={12} md={4}>
                 <InfoArea
-                  title="About Me"
-                  description="In this section you can find my updated skills, my jobs and my CV/Resume"
+                  title="Riguardo me"
+                  description="In questa sezione troverai le mie competenze, i miei lavori e il CV/Resume"
                   icon={Person}
                   iconColor="warning"
                   vertical
                 />
-                <Button color='warning' as='link' href='/about-me'>Read More</Button>
+                <Button color='warning' as='link' href='/it/riguardo-me'>Entra</Button>
               </GridItem>
               <GridItem xs={12} sm={12} md={4}>
                 <InfoArea
                   title="Apps & DApps"
-                  description={(<div>This is a little space where to play at my WebApps and DApps freely. <b>HARDCORE WIP</b></div>)}
+                  description={(<div>Questo è uno spazio dove puoi trovare le mie WebApps e Dapps. <b>HARDCORE WIP</b></div>)}
                   icon={Apps}
                   iconColor="success"
                   vertical
                 />
-                <Button disabled>Read More</Button>
+                <Button disabled>Entra</Button>
               </GridItem>
               <GridItem xs={12} sm={12} md={4}>
                 <InfoArea
                   title="The Blog"
-                  description="I will share my experiences on Web Developing, Cryptocurrencies and Bitcoin, but also 3D"
+                  description="Condivido e parlo di Web Developing, Criptovalute and Bitcoin, ma anche Grafica 3D"
                   icon={ChromeReaderModeIcon}
                   iconColor="info"
                   vertical
                 />
-                <Button as='link' href='/the-blog' color='info'>Read More</Button>
+                <Button as='link' href='/it/il-blog' color='info'>Entra</Button>
               </GridItem>
             </GridContainer>
           </GridItem>

@@ -47,10 +47,10 @@ export default function Components(props) {
       <NextSeo
         title="Giorgio Tedesco | Just a web developer"
         description="sito personale di Giorgio Tedesco tramite il quale condivido i miei interessi sul web developing, Grafica 3D, Criptovalute (Bitcoin & Altcoin), Intelligenza Artificiale, Deep Learning."
-        canonical="https://www.giorgiotedesco.it"
+        canonical="https://www.giorgiotedesco.it/it/"
         openGraph={{
           type: 'website',
-          url: 'https://www.giorgiotedesco.it',
+          url: 'https://www.giorgiotedesco.it/it/',
           title: 'Giorgio Tedesco',
           description: 'uno sviluppatore web',
           images: [
@@ -64,7 +64,7 @@ export default function Components(props) {
 
       <Layout title='Sono uno sviluppatore web' description='Con sede in Roma (Italia) ma nato in Brasile!' image='andras-vas-Bd7gNnWJBkU-unsplash.jpg'>
         <HomeSection />
-        <TweetSection posts={blockstack} />
+        {/* <TweetSection posts={blockstack} /> */}
       </Layout>
     </div>
   );

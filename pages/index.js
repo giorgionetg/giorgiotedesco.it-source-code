@@ -64,7 +64,7 @@ export default function Components(props) {
 
       <Layout title='Just a web developer' description='Based in Rome (Italy) and born in Brazil!' image='andras-vas-Bd7gNnWJBkU-unsplash.jpg'>
         <HomeSection />
-        <TweetSection posts={blockstack} />
+        {/*<TweetSection posts={blockstack} />*/}
       </Layout>
     </div>
   );
