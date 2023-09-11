@@ -62,7 +62,7 @@ export default function Components(props) {
         }}
       />
 
-      <Layout title='Just a web developer' description='Based in Rome (Italy) and born in Brazil!' image='andras-vas-Bd7gNnWJBkU-unsplash.jpg'>
+      <Layout title='Just a web developer' description='Based in Rome (Italy) and born in Brazil!' image='epicRealismV5-homepage.png'>
         <HomeSection />
         {/*<TweetSection posts={blockstack} />*/}
       </Layout>

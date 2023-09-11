@@ -18,6 +18,7 @@ export default function Viewer ( { myResume } ) {
   const works = myResume.work;
   const skills = myResume.skills;
   const edu = myResume.education;
+  const projects = myResume.projects;
   return(
     <>
       <Layout title='My current CV / Resumé' description={(<Button disabled color='info'>DOWNLOAD MY PDF CV</Button>)} image='scott-graham-OQMZwNd3ThU-unsplash.jpg'>
@@ -45,6 +46,9 @@ export default function Viewer ( { myResume } ) {
                       </h4>
                       <p><Badge color='warning'>{ work.position }</Badge></p>
                       <p>{ work.summary }</p>
+                      <p>{ (work.highlights.length > 0) ? work.highlights.map((i) => {
+                        return <Badge>{i}</Badge>
+                      }) : null }</p>
                       {theLink}
                     </CardBody>
                   </Card>
@@ -68,6 +72,22 @@ export default function Viewer ( { myResume } ) {
                 </CardBody>
               </Card>)
           })}
+
+          <h3>Side Projects</h3>
+          { projects.map( (project) => {
+            return(
+              <Card>
+                <CardBody>
+                  <h5>{project.name}<br/><small>{edu.studyType}</small></h5>
+                  <p>{project.description}</p>
+                  <p>{ (project.highlights.length > 0) ? project.highlights.map((i) => {
+                        return <Badge>{i}</Badge>
+                      }) : null }</p>
+                <Button as="link" color="primary" href={project.url} target="_blank">Go To the website</Button>
+                </CardBody>
+              </Card>)
+          })}
+
         </GridItem>
       </GridContainer>
 
