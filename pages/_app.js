@@ -23,10 +23,6 @@ import Router from "next/router";
 
 import PageChange from "components/PageChange/PageChange.js";
 
-import { Connect } from '@blockstack/connect';
-import { UserSession } from '@stacks/auth';
-import { appConfig } from '../assets/constants';
-const userSession = new UserSession({ appConfig });
 
 import "assets/scss/nextjs-material-kit.scss?v=1.1.0";
 
@@ -53,19 +49,6 @@ export default class MyApp extends App {
     userData: null,
   };
 
-  componentDidMount() {
-
-    if (userSession.isSignInPending()) {
-      userSession.handlePendingSignIn().then(userData => {
-        window.history.replaceState({}, document.title, '/');
-        this.setState({ userData: userData });
-      });
-    } else if (userSession.isUserSignedIn()) {
-      this.setState({ userData: userSession.loadUserData() });
-    }
-
-  }
-
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};
 
@@ -84,11 +67,7 @@ export default class MyApp extends App {
       appDetails: {
         name: "GiorgioTedesco",
         icon: '/logo.svg',
-      },
-      userSession,
-      finished: ({ userSession }) => {
-        this.setState({ userData: userSession.loadUserData() });
-      },
+      }
     };
 
 
@@ -118,9 +97,7 @@ export default class MyApp extends App {
           rel="stylesheet"
         />
       </Head>
-        <Connect authOptions={authOptions}>
           <Component {...pageProps} userData={userData}/>
-        </Connect>
       </React.Fragment>
     );
   }
