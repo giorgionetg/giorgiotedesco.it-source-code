@@ -1,42 +1,55 @@
 {
-  "$schema": "https://json.schemastore.org/resume",
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Giorgio Tedesco",
-    "label": "ICT Security Analyst & Web Developer Specialist - Cryptocurrency ( ethereum, xrp )",
+    "label": "Web Developer Specialist - Gaming - Cryptocurrency ( ethereum, xrp )",
     "image": "",
     "email": "giorgionetg@gmail.com",
-    "phone": "3331264015",
-    "url": "",
-    "summary": "Maker, Python Blender Game and Interactive Developer, unofficial Blender teacher.\nI currently learning Solidity Language..",
+    "phone": "(+39) 333.12.64.015",
+    "url": "https://www.giorgiotedesco.it",
+    "summary": "Experienced full-stack web developer with a passion for creating seamless user experiences and a strong proficiency in React, Next.js, database management and Web3 technologies Ethereum based.",
     "location": {
       "address": "Italy",
       "postalCode": "",
       "city": "",
-      "countryCode": "US",
-      "region": ""
+      "countryCode": "RM",
+      "region": "Lazio"
     },
     "profiles": [
       {
         "network": "LinkedIn",
         "username": "giorgiotedesco",
-        "url": "https://www.linkedin.com/in/giorgiotedesco/"
+        "url": "https://www.linkedin.com/in/giorgiotedesco"
+      },
+      {
+        "network": "GitHub",
+        "username": "giorgionetg",
+        "url": "https://github.com/giorgionetg"
       }
     ]
   },
   "work": [
     {
+      "name": "Wonderland Engine",
+      "highlights": ["Docker", "Git", "React", "Next.js", "MongoDB", "Strapi.js"],
+      "position": "Fullstack Web Developer",
+      "startDate": "2022-06-04",
+      "summary": "As a full-stack web developer, I have experience working in a containerized environment (Docker), where I brought a web application to life using React and Next.js technologies. I collaborated on the project within a private GitLab context alongside other full-stack developers.",
+      "url": "https://www.wonderlandengine.com"
+    },
+    {
       "name": "ELETTRONICA S.p.A.",
-      "endDate": "",
-      "highlights": [],
-      "position": "Web Developer, Security Analyst",
+      "endDate": "2022-05-27",
+      "highlights": ["PHP", "Linux", "OctoberCMS", "React"],
+      "position": "Fullstack Web Developer, Security Analyst",
       "startDate": "2014-06-30",
-      "summary": "Symfony 2.3 LTS with Sonata Project Bundle",
+      "summary": "As a full-stack web developer and security analyst, my work was balanced between two main roles. In the first role, I was responsible for developing the website using OctoberCMS and creating the intranet using Symfony. Additionally, I collaborated on other internal projects involving tools like React and Next.js. On the other side of my responsibilities, I worked as a security analyst, ensuring the security of the systems and data.",
       "url": "https://www.elt-roma.com"
     },
     {
       "name": "Quantum Leap Ip",
       "endDate": "2014-06-30",
-      "highlights": [],
+      "highlights": ["TEDxRome"],
       "position": "Web Developer",
       "startDate": "2013-10-31",
       "summary": "The company is active in two areas: serach and development of new projects to obtain patent status as well as TEDxRome.\n\nAs Part Time consultant, I was the reponsible of project: new Trends Domains. I worked on setup of most little landing page sites using Silex Microframework refactoring the behaviour of multiple wordpress websites with deprecated release.",
@@ -327,5 +340,13 @@
       "reference": "Giorgio ha fornito dei servizi di consulenza come grafico e webdesigner, molto competente e puntuale, è un'ottima persona ed un diligente professionista."
     }
   ],
-  "projects": []
+  "projects": [{
+    "name": "FTSO.eu",
+    "startDate": "2020-12-31",
+    "description": "A Bot to scrape exchanges and feed the Oracle system on Flare Network Blockchain",
+    "highlights": [
+      "React", "Next.js", "Web3", "Solitidy Language", "Hardhat.js", "ethereum.js", "Blockchain"
+    ],
+    "url": "https://ftso.eu/"
+  }]
 }

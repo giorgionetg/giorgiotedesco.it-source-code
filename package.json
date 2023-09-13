@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next dev -p 3030",
     "build": "next build",
-    "export": "rm -rf .next/ && next build && next export",
+    "export:unix": "rm -rf .next/ && next build && next export",
+    "export:win": "next build && next export",
     "sitemap": "node sitemapgenerator.js",
     "start": "next start",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && rm -rf .next/ && npm install && npm run dev"

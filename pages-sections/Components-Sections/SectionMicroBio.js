@@ -43,18 +43,13 @@ export default function SectionMicroBio() {
             <small>There is a reason for low res (I'm working in a little web game)!</small>
           </GridItem>
           <GridItem  xs={12} sm={12} md={8}>
-            <h4>
-               I'm a passionate web developer with a lot of hobbies in different fields.<br />
-               I discovered, at first, CG3D and Special Fx; then, at college time, I started to code (aka scripting), specially in HTML, JS and CSS.</h4>
-            <h4>
-               At university as a self thaught I improved skills on server side with PHP, APACHE and MYSQL in a linux enviroment.<br />
-            </h4>
-            <h4>
-              Today I'm working with the modern web technologies like ReactJs, NextJs, but also a bit of Solidity, Web3 integration and cryptocurrency's stack.
-            </h4>
-            <h4>
-              Not less important but I had got also some experiences with AI (ML in the python enviroment) and Google Colab (just because I currently have not a good Nvidia GPU).
-            </h4>
+          <h4>I'm a dedicated web developer with a passion that extends into various exciting realms. My journey began with a fascination for CG3D and Special Effects, and as I ventured into the world of academia, I delved into the art of coding, particularly mastering HTML, JS, and CSS.</h4>
+
+          <h4>During my time at university, I honed my server-side skills, delving into PHP, APACHE, and MYSQL within a Linux environment, all as a self-taught enthusiast. Today, I find myself at the forefront of modern web technologies, proficient in ReactJs, NextJs, and even venturing into the realm of Solidity, Web3 integration, and cryptocurrencies.</h4>
+
+          <h4>Beyond web development, I've had the privilege of gaining hands-on experience with Artificial Intelligence, diving into the world of Machine Learning within the Python environment. I've even explored the potential of Google Colab, making the most of the resources available despite not having access to a high-powered Nvidia GPU.</h4>
+
+          <h4>My journey as a web developer is characterized by a relentless pursuit of knowledge and innovation, and I'm excited to see where this ever-evolving field will take me next.</h4>
             <Button as='link' href="/web-apps/json-resume/viewer/" color="info">My CV / Resumé</Button>
           </GridItem>
         </GridContainer>

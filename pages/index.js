@@ -9,37 +9,17 @@ import { makeStyles } from "@material-ui/core/styles";
 // core components
 import Layout from "components/Layout/Layout.js";
 
-import CardBody from "components/Card/CardBody";
-import CardFooter from "components/Card/CardFooter";
-
-
 import HomeSection from "pages-sections/LandingPage-Sections/HomeSection.js";
-import TweetSection from "pages-sections/LandingPage-Sections/TweetSection.js";
 
 import { NextSeo } from 'next-seo';
 
 import styles from "assets/jss/nextjs-material-kit/pages/components.js";
 
 const useStyles = makeStyles(styles);
-import useSWR from 'swr'
-//https://gaia.blockstack.org/hub/1NsfK4B23SFDj1xqh85FANqnrFG1zKU2BU/status.json
-
 
 export default function Components(props) {
   const classes = useStyles();
   const { ...rest } = props;
-
-  const [blockstack, setBlockstack] = useState([{id:0,emotion:'',sentence:'', datetime:0}]);
-
-  useEffect(() => {
-    // localhost:   https://gaia.blockstack.org/hub/1NsfK4B23SFDj1xqh85FANqnrFG1zKU2BU/status.json
-    // prod:        https://gaia.blockstack.org/hub/1N3qdhpi671XKMaayJ2hnuB85MbciL9RQC/status.json
-
-    fetch('https://gaia.blockstack.org/hub/1N3qdhpi671XKMaayJ2hnuB85MbciL9RQC/status.json')
-      .then(res => res.json())
-      .then(data => setBlockstack(data.posts.sort((a,b) => { return b.datetime - a.datetime})))
-  }, []);
-
 
   return (
     <div>
@@ -62,9 +42,8 @@ export default function Components(props) {
         }}
       />
 
-      <Layout title='Just a web developer' description='Based in Rome (Italy) and born in Brazil!' image='andras-vas-Bd7gNnWJBkU-unsplash.jpg'>
+      <Layout title='Just a web developer' description='Based in Rome (Italy) and born in Brazil!' image='epicRealismV5-homepage.png'>
         <HomeSection />
-        {/*<TweetSection posts={blockstack} />*/}
       </Layout>
     </div>
   );

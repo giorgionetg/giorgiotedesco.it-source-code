@@ -12,24 +12,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import Favorite from "@material-ui/icons/Favorite";
 
 import Button from "components/CustomButtons/Button";
-import { useConnect } from '@blockstack/connect';
-import { Storage } from '@stacks/storage';
-
 
 import styles from "assets/jss/nextjs-material-kit/components/footerStyle.js";
 
 const useStyles = makeStyles(styles);
 
 export default function Footer(props) {
-
-  const { doOpenAuth, authOptions } = useConnect();
-  const { userSession } = authOptions;
-  let loginB;
-  if (userSession.isUserSignedIn()) {
-    loginB = (<Button as='link' href="/admin">ADMIN</Button>)
-  } else {
-    loginB = (<Button onClick={() => doOpenAuth()}>LOGIN</Button>)
-  }
 
   const classes = useStyles();
   const { whiteFont } = props;
@@ -83,9 +71,6 @@ export default function Footer(props) {
               </a>
             </ListItem> */}
 
-            <ListItem className={classes.inlineBlock}>
-              { loginB }
-            </ListItem>
             <ListItem className={classes.inlineBlock}>
               <a
                 as='link'
